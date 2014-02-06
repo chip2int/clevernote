@@ -1,0 +1,20 @@
+.main-menu {
+	background-color: yellow
+}
+
+.left-panel {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  width: 20%;
+  border-color: green;
+  border-style: double;
+}
+
+.right-panel {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 25%;
+  width: 75%;
+}

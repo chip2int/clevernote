@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CleverNote</title>
+</head>
+<body ng-app="CleverNote">
+  <script src="./lib/bower_components/angular/angular.js"></script>
+  <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+  <script src="./client/app.js"></script>
+  <script src="./client/state.js"></script>
+  <link rel="stylesheet" type="text/css" href="./client/stylesheets/style.css">
+  <div class="main-menu">
+    <div class="left-panel">
+      <ul>
+        <li><a ui-sref="main">Main</a></li>
+        <li><a ui-sref="search">Search</a></li>
+      </ul>
+    </div>
+    <div class="right-panel" ui-view>
+      <ul>
+      <h1> Right Panel </h1>
+      </ul>
+    </div>
+  </div>  
+</body>
+</html>
+
+
