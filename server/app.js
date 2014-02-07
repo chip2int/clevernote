@@ -1,6 +1,8 @@
 var express = require('express');
-var path   = require('path');
-var app    = express();
+var path    = require('path');
+var app     = express();
+var db      = require('db.js');
+
 
 app.set('port', process.env.PORT || 3500);
 app.use(express.favicon());
