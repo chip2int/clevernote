@@ -12,6 +12,7 @@ var NoteSchema = new Schema({
 });
 
 var UserSchema = new Schema({
+  id: Number,
   name: String,
   privateKey: String,
   publicKey: String
