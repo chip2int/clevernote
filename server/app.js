@@ -15,8 +15,12 @@ app.use(express.static(path.join(__dirname, '..', '/public')));
 
 
 /* note endpoints */
+app.get('/notes/', db.getNoteList );
 app.get('/notes/:noteId', db.retrieve );
 app.post('/notes/', db.save );
+
+// app.post('/search/:tags', db.search); //TODO: allow searching
+
 
 console.log("Dir", __dirname);
 app.listen(app.get('port'));

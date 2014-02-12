@@ -10,10 +10,22 @@ db.once('open', function(){
 
 
 /* testing curl
+test save: 
 curl -X POST -H "Content-Type: application/json" -d '{"title": "hi", "tags": ["help", "me", "save"], "body": "longbodybodfkjsdf lkjsdflkjsdf sdflkjsdf "}' http://localhost:3500/notes/
+
+test getNoteList: 
+curl -X GET  http://localhost:3500/notes/
 */
 
 var exports = {
+  getNoteList: function(req, res) {
+    // get titles, tags, ids of all notes
+
+    models.Note.find(function(err, notes){
+      if (err) console.log("Error in getNoteList: ", err);
+      res.send(notes);
+    });
+  },
   save: function(req, res){
     var note = req.body;
     var saveme = new models.Note({
