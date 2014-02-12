@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, '..', '/public')));
 
 
 /* note endpoints */
-app.get('/notes/', db.getNoteList );
+app.get('/notes/list', db.noteList );
 app.get('/notes/:noteId', db.retrieve );
 app.post('/notes/', db.save );
 

@@ -14,11 +14,14 @@ test save:
 curl -X POST -H "Content-Type: application/json" -d '{"title": "hi", "tags": ["help", "me", "save"], "body": "longbodybodfkjsdf lkjsdflkjsdf sdflkjsdf "}' http://localhost:3500/notes/
 
 test getNoteList: 
-curl -X GET  http://localhost:3500/notes/
+curl -X GET  http://localhost:3500/notes/list
+
+test retrieve: 
+curl -X GET  http://localhost:3500/notes/52f5e3a2efa5d2c5b57c76b4
 */
 
 var exports = {
-  getNoteList: function(req, res) {
+  noteList: function(req, res) {
     // get titles, tags, ids of all notes
 
     models.Note.find(function(err, notes){
@@ -39,12 +42,13 @@ var exports = {
     });
   },
   retrieve: function(req, res){
-    console.log(req.params.noteId);
-    models.Note.find(function(err, note) {
+    // console.log(req.params.noteId);
+
+    models.Note.find({_id: req.params.noteId }, function(err, note) {
       if (err) throw console.log('big err: ',err);
-      res.send('saving this blob: ', note);
+      console.log('sending blog: ' ,note);
+      res.send(note);
     });
-    res.send('getting hi: ',req.params.noteId );
   }
 
 };
