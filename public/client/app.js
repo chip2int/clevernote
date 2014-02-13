@@ -1,1 +1,1 @@
-angular.module('CleverNote', ['ui.router']);
+angular.module('CleverNote', ['ui.router', 'ui.bootstrap']);

@@ -1,20 +1,95 @@
-.main-menu {
-	background-color: yellow
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+
+.main-menu{
+  position:fixed;
+  padding-top: 20px;
+  margin-top:100px;
+  margin-left:20px;
+  margin-right:200px;
+  width: 90%;
+  background-color: white
+}
+
+.title-menu {
+  position:relative;
+  text-align: center;
+  font-size: 50px;
+  border-style:double;
 }
 
 .left-panel {
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
+  float:left;
+  top: 30px;
+  bottom: 30px;
   width: 20%;
+  height: 100%;
   border-color: green;
   border-style: double;
 }
 
 .right-panel {
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 25%;
-  width: 75%;
+  float: left;
+  top: 30px;
+  width: 80%;
+  height: 100%;
+  border-color:green;
+  border-style: double;
+  height: 294px;
 }
+
+.div-left-panel-main {
+  postion:absolute;
+  width: 100%;
+  height: 25%;
+  background-color: blue;
+}
+
+
+.div-left-panel-srch {
+  width: 100%;
+  height: 25%;
+  background-color: red;
+}
+
+.div-left-panel-fldr {
+  width: 100%;
+  height: 25%;
+  background-color: white;
+}
+
+.div-left-panel-tags {
+  width: 100%;
+  height: 25%;
+  background-color: aquamarine;
+}
+
+.home-icon {
+  width:100%;
+  height: 100%;
+}
+
+.search-icon {
+  width:100%;
+  height:100%;
+}
+
+.folders-icon {
+  width:100%;
+  height:100%;
+}
+
+.tags-icon {
+  width:100%;
+  height:100%;
+}
+
+.btn a {
+  display: block;
+  height: 100%;
+}
+
+
+
