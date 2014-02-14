@@ -1,0 +1,21 @@
+<div ng-controller="createEntryCntrl">
+  <div>Date: {{dt | date:'MM/dd/yyyy'}}</div>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+	<p>Entry <textarea rows="10" cols="80" class="entry"></textarea>
+		<div>
+			<span>
+				<button type="button" class="submitButton">Post Entry</button>
+				<button type="button" class="readButton">Read Entry</button>
+				<button type="button" class="clearButton">Clear</button>
+			</span>
+		</div>
+

@@ -4,23 +4,45 @@
 	<title>CleverNote</title>
 </head>
 <body ng-app="CleverNote">
-  <script src="./lib/bower_components/angular/angular.js"></script>
-  <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="../bower_components/angular-ui-router/angular-ui-router.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="./client/stylesheets/topcoat/css/topcoat-mobile-light.min.css"/>
   <script src="./client/app.js"></script>
   <script src="./client/state.js"></script>
+  <script src="./client/controllers/createEntryCntrl.js"></script> 
   <link rel="stylesheet" type="text/css" href="./client/stylesheets/style.css">
   <div class="main-menu">
+  <div class="title-menu">CleverNote</div>
     <div class="left-panel">
-      <ul>
-        <li><a ui-sref="main">Main</a></li>
-        <li><a ui-sref="search">Search</a></li>
-      </ul>
+    <div class="div-left-panel-main btn">
+        <a ui-sref="main">
+          <button class="topcoat-button--large home-icon">Create</button>
+        </a>
+      </div>
+      <div class="div-left-panel-srch btn">
+        <a ui-sref="search">
+          <button class="topcoat-button--large search-icon">Search</button>
+        </a>
+      </div>
+      <div class="div-left-panel-fldr btn">
+        <a ui-sref="folders">
+          <button class="topcoat-button--large folders-icon">Folders</button>
+        </a>
+      </div>
+      <div class="div-left-panel-tags btn">
+        <a ui-sref="tags">
+          <button class="topcoat-button--large tags-icon">Tags</button>
+        </a>
+      </div>
     </div>
     <div class="right-panel" ui-view>
       <ul>
-      <h1> Right Panel </h1>
+        <h1> Right Panel </h1>
       </ul>
-    </div>
+    </div>  
   </div>  
 </body>
 </html>
