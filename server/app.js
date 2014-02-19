@@ -43,14 +43,16 @@ app.use(express.static(path.join(__dirname, '..', '/public')));
 
 
 /* node endpoints */
-app.get('/notes/list', db.noteList );
-app.get('/notes/:noteId', db.retrieve );
-app.post('/notes/', db.save );
+app.get('/notes/destroy/:noteId', db.destroy );
+app.get('/notes/list'           , db.noteList );
+app.get('/notes/:noteId'        , db.retrieve );
+app.post('/notes/'              , db.save );
 
-// app.post('/search/:tags', db.search); //TODO: allow searching
+
+// app.post('/search/:tags', db.search); //TODO: allow searching on frontend
 
 
-console.log("Dir", __dirname);
+console.log("Dir: ", __dirname);
 
 http.createServer(httpApp).listen(httpApp.get('port'), function() {
     console.log('Express HTTP server listening on port ' + httpApp.get('port'));

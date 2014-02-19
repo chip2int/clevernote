@@ -9,16 +9,6 @@ db.once('open', function(){
 });
 
 
-/* testing curl
-test save: 
-curl -X POST -H "Content-Type: application/json" -d '{"title": "hi", "tags": ["help", "me", "save"], "body": "longbodybodfkjsdf lkjsdflkjsdf sdflkjsdf "}' http://localhost:3500/notes/
-
-test getNoteList: 
-curl -X GET  http://localhost:3500/notes/list
-
-test retrieve: 
-curl -X GET  http://localhost:3500/notes/52f5e3a2efa5d2c5b57c76b4
-*/
 
 var exports = {
   noteList: function(req, res) {
@@ -49,8 +39,32 @@ var exports = {
       console.log('sending blog: ' ,note);
       res.send(note);
     });
-  }
+  }, 
+  destroy: function(req, res) {
+    // permamently removes the note
 
+    models.Note.findById(req.params.noteId, function(err, note){
+      note.remove( function(err, note) {
+        if (err) throw console.log('err in destroy: ', err);
+        console.log('destroying note: ', note);      
+        res.send('removed');
+        
+      });
+    });
+  }
 };
 
 module.exports = exports;
+/* testing curl
+test save: 
+curl --insecure -X POST -H "Content-Type: application/json" -d '{"title": "hi", "tags": ["help", "me", "save"], "body": "longbodybodfkjsdf lkjsdflkjsdf sdflkjsdf "}' https://localhost:3030/notes/
+
+test getNoteList: 
+curl --insecure -X GET  https://localhost:3030/notes/list
+
+test retrieve: 
+curl --insecure -X GET  https://localhost:3030/notes/52f5e3a2efa5d2c5b57c76b4
+
+testring destroy: 
+curl --insecure -X GET  https://localhost:3030/notes/destroy/53046abcf5df756927fd01ac
+*/
