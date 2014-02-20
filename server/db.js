@@ -1,13 +1,5 @@
-var mongoose      = require('mongoose');
-mongoose.connect('mongodb://localhost/clevernote');
+
 var models = require('./schema.js');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function(){
-  console.log('db connection opened successfully');
-});
-
 
 
 var exports = {
@@ -55,16 +47,4 @@ var exports = {
 };
 
 module.exports = exports;
-/* testing curl
-test save: 
-curl --insecure -X POST -H "Content-Type: application/json" -d '{"title": "hi", "tags": ["help", "me", "save"], "body": "longbodybodfkjsdf lkjsdflkjsdf sdflkjsdf "}' https://localhost:3030/notes/
 
-test getNoteList: 
-curl --insecure -X GET  https://localhost:3030/notes/list
-
-test retrieve: 
-curl --insecure -X GET  https://localhost:3030/notes/52f5e3a2efa5d2c5b57c76b4
-
-testring destroy: 
-curl --insecure -X GET  https://localhost:3030/notes/destroy/53046abcf5df756927fd01ac
-*/

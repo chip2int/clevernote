@@ -8,6 +8,16 @@ var app     = express(),
 var db      = require('./db.js');
 var fs      = require('fs');
 
+/* init the db */
+var mongoose      = require('mongoose');
+var MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017/clevernote";
+mongoose.connect(MONGODB_URL);
+
+var mongo = mongoose.connection;
+mongo.on('error', console.error.bind(console, 'connection error:'));
+mongo.once('open', function(){
+  console.log('mongo connection opened successfully');
+});
 
 /* 
  Make sure you have followed the instructions to create the following keys
