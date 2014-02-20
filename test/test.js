@@ -1,31 +1,30 @@
-var expect   = require('chai').expect,
-    assert   = require('assert'),
-    mongoose = require('mongoose'),
-    db       = require('../server/db.js');
-
-
 // specific test database, and we'll wipe it after every test //
 var MONGODB_URL = process.env.MONGODB_URL || 
       'mongodb://localhost/testernote',
     clearDbAfterTests = true; // this isn't being used yet, but should
 
+var expect   = require('chai').expect,
+    assert   = require('assert'),
+    mongoose = require('mongoose'),
+    db       = require('../server/db.js'),
+    clearDB  = require('mocha-mongoose')(MONGODB_URL);
+
+
+
 /* DB tests */
 describe('#DB', function(){
 
-  mongoose.connect(MONGODB_URL);
-  var mongo = mongoose.connection;
-  mongo.on('error', console.error.bind(console, 'connection error:'));
-  mongo.once('open', function(){
-    console.log('mongo connection opened successfully');
-  });
-  beforeEach(function(){
-    mongo.clear();
+  beforeEach(function(done){
+    if (mongoose.connection.db) return done();
+    
+    mongoose.connect(MONGODB_URL, done);
+    // mongo.clear();
   });
   describe('schema functions', function(){
     var models = require('../server/schema.js'),
-     note1 = new models.Note ({title: "n1", tags: ["note", "1", "tag"], body: "note 1 is this"}),
-     note2 = new models.Note ({title: "n2", tags: ["note", "2", "tag"], body: "note 2 is this"}),
-     note3 = new models.Note ({title: "n3", tags: ["note", "3", "tag"], body: "note 3 is this"});
+      note1 = new models.Note ({title: "n1", tags: ["note", "1", "tag"], body: "note 1 is this"}),
+      note2 = new models.Note ({title: "n2", tags: ["note", "2", "tag"], body: "note 2 is this"}),
+      note3 = new models.Note ({title: "n3", tags: ["note", "3", "tag"], body: "note 3 is this"});
     
     it('should save notes without error',function(done){
       note1.save(done);
