@@ -1,23 +1,22 @@
-var express = require('express');
-var https   = require('https');
-var http   = require('http');
-
-var path    = require('path');
-var app     = express(),
-    httpApp = express();
-var db      = require('./db.js');
-var fs      = require('fs');
+var express = require('express'),
+    https   = require('https'),
+    http    = require('http'),
+    path    = require('path'),
+    app     = express(),
+    httpApp = express(),
+    db      = require('./db.js'),
+    fs      = require('fs'),
+    mongoose= require('mongoose');
 
 /* init the db */
-var mongoose      = require('mongoose');
 var MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017/clevernote";
-mongoose.connect(MONGODB_URL);
-
+    mongoose.connect(MONGODB_URL);
 var mongo = mongoose.connection;
-mongo.on('error', console.error.bind(console, 'connection error:'));
-mongo.once('open', function(){
-  console.log('mongo connection opened successfully');
-});
+
+    mongo.on('error', console.error.bind(console, 'connection error:'));
+    mongo.once('open', function(){
+      console.log('mongo connection opened successfully');
+    });
 
 /* 
  Make sure you have followed the instructions to create the following keys

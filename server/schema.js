@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
 models = {};
 
 var NoteSchema = new Schema({
@@ -17,6 +18,8 @@ var UserSchema = new Schema({
   privateKey: String,
   publicKey: String
 });
+NoteSchema.set('toObject', { getters: true });
+UserSchema.set('toObject', { getters: true });
 
 models.Note = mongoose.model('Note', NoteSchema);
 models.User = mongoose.model('User', UserSchema);
