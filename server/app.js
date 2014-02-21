@@ -8,15 +8,6 @@ var express = require('express'),
     fs      = require('fs'),
     mongoose= require('mongoose');
 
-/* init the db */
-var MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017/clevernote";
-    mongoose.connect(MONGODB_URL);
-var mongo = mongoose.connection;
-
-    mongo.on('error', console.error.bind(console, 'connection error:'));
-    mongo.once('open', function(){
-      console.log('mongo connection opened successfully');
-    });
 
 /* 
  Make sure you have followed the instructions to create the following keys
@@ -63,15 +54,25 @@ app.post('/notes/'              , db.save );
 
 console.log("Dir: ", __dirname);
 
-http.createServer(httpApp).listen(httpApp.get('port'), function() {
-    console.log('Express HTTP server listening on port ' + httpApp.get('port'));
-});
+/* if NOT running in test environ, run like normal */
+if (!module.parent) { 
+  /* init the db */
+  var MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017/clevernote";
+      mongoose.connect(MONGODB_URL);
+  var mongo = mongoose.connection;
 
-https.createServer(sslOptions,app)
-  .listen('3030', function(){
-  console.log("Secure Express server listening on port 3030");
-});
+      mongo.on('error', console.error.bind(console, 'connection error:'));
+      mongo.once('open', function(){
+        console.log('mongo connection opened successfully');
+      });
 
-app.listen(app.get('port'));
+  http.createServer(httpApp).listen(httpApp.get('port'), function() {
+      console.log('Express HTTP server listening on port ' + httpApp.get('port'));
+  });
 
-
+  https.createServer(sslOptions,app)
+    .listen('3030', function(){
+    console.log("Secure Express server listening on port 3030");
+  });
+  // app.listen(app.get('port'));
+}

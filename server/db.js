@@ -1,6 +1,4 @@
-
 var models = require('./schema.js');
-
 
 var exports = {
   noteList: function(req, res) {
@@ -28,7 +26,7 @@ var exports = {
 
     models.Note.find({_id: req.params.noteId }, function(err, note) {
       if (err) throw console.log('big err: ',err);
-      console.log('sending blog: ' ,note);
+      // console.log('sending blog: ' ,note);
       res.send(note);
     });
   }, 
