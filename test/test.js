@@ -35,10 +35,11 @@ describe('#DB', function(){
     it('should retrieve a note when requested by ID#',function(done){
       var promise = Dummy.create({a: 1});
       promise.then(function(dummy) {
-        console.log(dummy);
-        done();
+        Dummy.findById(dummy._id, function(err, found){
+          assert.equal(found.a,1);
+          done();
+        });
       });
-
     });
     // it('should return a list of all notes',function(done){});
     // it('should destroy all notes',function(done){});
