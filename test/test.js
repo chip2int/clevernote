@@ -6,7 +6,8 @@ var MONGODB_URL = process.env.MONGODB_URL ||
 var expect   = require('chai').expect,
     assert   = require('assert'),
     mongoose = require('mongoose'),
-    db       = require('../server/db.js');
+    db       = require('../server/db.js'),
+    Dummy    = mongoose.model('Dummy', new mongoose.Schema({a:Number})),
     clearDB  = require('mocha-mongoose')(MONGODB_URL);
 
 var mongo;
@@ -28,24 +29,33 @@ describe('#DB', function(){
       note3 = {title: "n3", tags: ["note", "3", "tag"], body: "note 3 is this"};
     
     it('should save notes without error',function(done){
-      var promise = models.Note.create([note1, note2, note3]);
-      promise.then(function(){
-        done();
-      }); 
+      models.Note.create([note1, note2, note3], done);
     });
 
-    // it('should retrieve a note when requested by ID#',function(){});
-    // it('should return a list of all notes',function(){});
-    // it('should destroy all notes',function(){});
+    it('should retrieve a note when requested by ID#',function(done){
+      var promise = Dummy.create({a: 1});
+      promise.then(function(dummy) {
+        console.log(dummy);
+        done();
+      });
+
+    });
+    // it('should return a list of all notes',function(done){});
+    // it('should destroy all notes',function(done){});
   });
   // after(); /* We should now drop the testing DB */
 
 });
-        // test save: 
-        // curl --insecure -X POST -H "Content-Type: application/json" -d '{"title": "hi", "tags": ["help", "me", "save"], "body": "longbodybodfkjsdf lkjsdflkjsdf sdflkjsdf "}' https://localhost:3030/notes/
-        // testring destroy: 
-        // curl --insecure -X GET  https://localhost:3030/notes/destroy/53046abcf5df756927fd01ac
-        // test getNoteList: 
-        // curl --insecure -X GET  https://localhost:3030/notes/list
-        // test retrieve: 
-        // curl --insecure -X GET  https://localhost:3030/notes/52f5e3a2efa5d2c5b57c76b4
+
+
+/*
+test save: 
+curl --insecure -X POST -H "Content-Type: application/json" -d '{"title": "hi", "tags": ["help", "me", "save"], "body": "longbodybodfkjsdf lkjsdflkjsdf sdflkjsdf "}' https://localhost:3030/notes/
+testring destroy: 
+curl --insecure -X GET  https://localhost:3030/notes/destroy/53046abcf5df756927fd01ac
+test getNoteList: 
+curl --insecure -X GET  https://localhost:3030/notes/list
+test retrieve: 
+curl --insecure -X GET  https://localhost:3030/notes/52f5e3a2efa5d2c5b57c76b4
+
+*/
