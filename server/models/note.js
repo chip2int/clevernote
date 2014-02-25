@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var NoteSchema = new Schema({
   title: String,
-  tags: [{
+  Tags: [{
     type: mongoose.schema.ObjectId,
     ref: 'Tag',
     unique: true,

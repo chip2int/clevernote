@@ -6,10 +6,7 @@ var UserSchema = new Schema({
   name: String,
   privateKey: String,
   publicKey: String, 
-  notes: [{
-    type: mongoose.Schema.ObjectId,
-    ref : 'Note'
-  }]
+  books: [BookSchema]
 });
 
 UserSchema.set('toObject', { getters: true });
