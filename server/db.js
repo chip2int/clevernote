@@ -21,6 +21,9 @@ var exports = {
       res.send('saving this blob: ', noted);
     });
   },
+  update: function(req, res) {
+    // TODO: write this thing that updates the note
+  },
   retrieve: function(req, res){
     // console.log(req.params.noteId);
 
