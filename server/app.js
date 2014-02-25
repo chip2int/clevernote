@@ -47,11 +47,6 @@ require('./routes/userRoutes.js')(app);
 require('./routes/noteRoutes.js')(app);
 require('./routes/tagRoutes.js')(app);
 require('./routes/bookRoutes.js')(app);
-// app.get('/notes/destroy/:noteId', db.destroy );
-// app.get('/notes/list'           , db.noteList );
-// app.get('/notes/:noteId'        , db.retrieve );
-// app.post('/notes/'              , db.save );
-
 
 // app.post('/search/:tags', db.search); //TODO: allow searching on frontend
 
