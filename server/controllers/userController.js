@@ -5,14 +5,22 @@ var User = require('../models/user.js'),
     Q = require('q');
 
 module.exports = {
-  listAllNotes: function(req,res){ // get titles, tags, ids of all notes
+  listAllNotes: function(req,res){ 
+    // get titles, tags, ids of all notes
     var defer = Q.defer();
-    models.Note.find({})
-    .populate('Tags', 'Tag')
-    .exec(function (err, notes) {
-      if (err) console.log("Error in listAllNotes: ", err);
-      defer.resolve(notes);
-    });
+
+    User.findUserNotebooks()
+    .then(populateNotebooksWithNotes)
+    .then(populateNotesWithTags)
+    .then(function(data){
+      defer.resolve(data);
+    })
+    .catch(function (error) {
+      console.log("there was an error in listAllNotes: ", error);
+    })
+    .done();
     res.send(defer.promise);
-  }
+  },
+
+
 };
