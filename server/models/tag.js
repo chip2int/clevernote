@@ -17,3 +17,15 @@ var TagSchema = new Schema({
 TagSchema.set('toObject', { getters: true });
 
 module.export(mongoose.model('Tag', TagSchema));
+
+TagSchema.methods.updateTagName = function(data) {
+    // body...
+};  
+
+TagSchema.methods.deleteTag = function(data) {
+    // body...
+};  
+
+TagSchema.methods.searchForNotesByTagName = function(data) {
+    // body...
+};  
