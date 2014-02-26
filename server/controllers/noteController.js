@@ -15,8 +15,10 @@ module.exports = {
   }, 
   retrieveNote: function(req, res) {
     note_id = {_id: req.params.note_id};
-    Note.findAndReturnNoteWithTags(note_id)
+    // console.log(Note);
+    Note.schema.methods.findAndReturnNoteWithTags(note_id)
     .then(function(data) {
+      console.log('arguments in retrieveNote, ', arguments);
       res.send(data);
     })
     .catch(function (error) {
@@ -27,19 +29,23 @@ module.exports = {
   }, 
   updateNote: function(req, res) {
     note_id = {_id: req.params.note_id};
+    //TODO: this only allows us to update the Content of the note.
+    // Probably should be improved to allow us to update
+    // the Tags & Content @ the same time.
     Note.update({_id: note_id}, req.body, function (error){
+      if (error) resolve.reject();
+      res.send(204);
+    });
+  },
+  updateTags:  function(req, res) {
+    note_id = {_id: req.params.note_id};
+    Note.addAndRemoveTags({_id: note_id}, req.body, function (error){
       if (error) resolve.reject();
       res.send(204);
     });
   },
   listTagsOnNote: function(req, res) {
     note_id = {_id: req.params.note_id};
-  },
-  addTagToNote: function(req, res) {
-    note_id = {_id: req.params.note_id};
   }, 
-  removeTagFromNote: function(req, res) {
-    note_id = {_id: req.params.note_id};
-  }
 
 };

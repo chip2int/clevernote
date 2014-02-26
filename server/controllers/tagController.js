@@ -8,6 +8,14 @@ module.exports = {
     // body...
   },
   createNewTag: function(req, res) {
-    // create a new tag 
+    Tag.schema.methods.findOrCreateByName(req.params.tag_name)
+    .then(function (data) {
+      res.send(data);
+    })
+    .catch(function (error) {
+      console.log('there was an error in tagController, createNewTag: ', error);
+      res.send('error creating tag', 404);
+    })
+    .done();
   }
 };

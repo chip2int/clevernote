@@ -2,15 +2,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BookSchema = new Schema({
+  _id : Number,
   name: String,
   description: String,
   Notes: [{
-    type: mongoose.Schema.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Note'
   }],
   Owner: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User'
+    type: Schema.Types.ObjectId,
+    ref : 'User'
   }
 });
 
@@ -32,7 +33,7 @@ BookSchema.methods.getTitlesOfNotes = function(data) {
 
 BookSchema.methods.listNotes = function(data) {
   // body...
-};
+}; 
 
 BookSchema.methods.populateNotebooksWithNotes = function(data) {
   // body...

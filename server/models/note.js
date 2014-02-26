@@ -4,9 +4,11 @@ var mongoose    = require('mongoose'),
 
 var NoteSchema  = new Schema({
   title: String,
+  _owner: {type: Schema.Types.ObjectId, ref: 'User'},
+  _book: {type: Schema.Types.ObjectId, ref: 'Book'},
   Tags: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'Tag',
+    type  : Number,
+    ref   : 'Tag',
     unique: true,
     sparse: true
   }],
@@ -16,26 +18,48 @@ var NoteSchema  = new Schema({
 });
 
 
-NoteSchema.method('findAndReturnNoteWithTags', function(data) {
+NoteSchema.methods.findAndReturnNoteWithTags = function(data) {
   var defer = Q.defer();
+  var Note = mongoose.model('Note', NoteSchema),
+      options = {
+        path   : 'Tags',
+        // select : 'name'
+      };
   console.log('findAndReturnNoteWithTags: ');
-  var note = Note.findById(data)
+  
+  Note.findOne(data)
+  .populate(options)
   .exec(function (err, note) {
-    console.log(note);
-    note.populateNoteWithTags();
-    defer.resolve(note);
-  });
-  return defer.promise;
-});
+    console.log('arguments  ', arguments);
 
-NoteSchema.method('populateNoteWithTags',function(data) {
-  var defer = Q.defer();
-  this.populate('Tags','Tags')
-  .exec(function (err, note) {
-    console.log(note);
     defer.resolve(note);
   });
   return defer.promise;
-}); 
+};
+
+NoteSchema.methods.addAndRemoveTags = function (data) {
+  var defer = Q.defer();
+  var Note = mongoose.model('Note', NoteSchema),
+      options = {
+        path   : 'Tags',
+        select : 'name'
+      };
+  return defer.promise;
+};
+
+// NoteSchema.methods.populateNoteWithTags = function(data) {
+//   var defer = Q.defer();
+//   var Note = mongoose.model('Note', NoteSchema);
+  
+//   console.log(data);
+//   data
+//   .populate(options)
+//   .exec(function (err, note) {
+//     console.log('arguments in populateNoteWithTags ', arguments);
+
+//     defer.resolve(note);
+//   });
+//   return defer.promise;
+// }; 
 
 module.exports = mongoose.model('Note', NoteSchema);

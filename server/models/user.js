@@ -2,13 +2,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-  id: Number,
+  _id : Number,
   name: String,
   privateKey: String,
-  publicKey: String, 
+  publicKey : String, 
   books: [{
-    ref: mongoose.Schema.ObjectId,
-    type: 'Book'
+    type: Schema.Types.ObjectId,
+    ref : 'Book'
   }]
 });
 

@@ -6,6 +6,6 @@ module.exports = function(app){
   
   app.get('/tags/search/:query', tagCtrl.search       );
   app.get('/tags/all',           tagCtrl.listAll      );
-  app.post('/tag/',              tagCtrl.createNewTag );
-
+  app.get('/tag/:tag_name',      tagCtrl.createNewTag );
+  
 };
