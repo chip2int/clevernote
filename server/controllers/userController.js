@@ -1,6 +1,6 @@
 var Tag  = require('../models/tag.js'),
-    // Note = require('../models/note.js'),
-    // Book  = require('../models/book.js'),
+    Note = require('../models/note.js'),
+    Book  = require('../models/book.js'),
     // User = require('../models/user.js'),
     Q = require('q');
 

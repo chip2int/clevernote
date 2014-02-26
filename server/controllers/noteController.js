@@ -7,29 +7,39 @@ module.exports = {
     res.send(note);
   },
   destroyNote: function(req, res) {
-    console.log('params',req.params.note_id);
-    Note.where().findOneAndRemove({_id: req.params.note_id}, function(err) {
+    note_id = {_id: req.params.note_id};
+    Note.where().findOneAndRemove(note_id, function(err) {
       console.log('error here:', err);
     });
-    res.send(200);
+    res.send(204);
   }, 
   retrieveNote: function(req, res) {
-    // get note by Id & return note
-    // Note.findById({});
-
-    // res.send();
+    note_id = {_id: req.params.note_id};
+    Note.findAndReturnNoteWithTags(note_id)
+    .then(function(data) {
+      res.send(data);
+    })
+    .catch(function (error) {
+      console.log('there was an error in NoteController, retrieveNote: ', error);
+      res.send('error getting note', 404);
+    })
+    .done();
   }, 
   updateNote: function(req, res) {
-    // body...
+    note_id = {_id: req.params.note_id};
+    Note.update({_id: note_id}, req.body, function (error){
+      if (error) resolve.reject();
+      res.send(204);
+    });
   },
   listTagsOnNote: function(req, res) {
-    // body...
+    note_id = {_id: req.params.note_id};
   },
   addTagToNote: function(req, res) {
-    // body...
+    note_id = {_id: req.params.note_id};
   }, 
   removeTagFromNote: function(req, res) {
-    // body...
+    note_id = {_id: req.params.note_id};
   }
 
 };

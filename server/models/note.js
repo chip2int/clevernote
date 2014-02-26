@@ -16,23 +16,26 @@ var NoteSchema  = new Schema({
 });
 
 
-module.exports = mongoose.model('Note', NoteSchema);
-
-NoteSchema.methods.populateNoteWithTags = function(data) {
-  // body...
-};
-
-NoteSchema.methods.createNote = function(data) {
+NoteSchema.method('findAndReturnNoteWithTags', function(data) {
   var defer = Q.defer();
-    console.log('note ');
-  
-  var note = new mongoose.model('Note');
-  note.save(function (error, note) {
-    console.log('note made', note);
-    console.log('arguments', arguments);
-    if (error) defer.reject();
+  console.log('findAndReturnNoteWithTags: ');
+  var note = Note.findById(data)
+  .exec(function (err, note) {
+    console.log(note);
+    note.populateNoteWithTags();
     defer.resolve(note);
   });
-
   return defer.promise;
-};
+});
+
+NoteSchema.method('populateNoteWithTags',function(data) {
+  var defer = Q.defer();
+  this.populate('Tags','Tags')
+  .exec(function (err, note) {
+    console.log(note);
+    defer.resolve(note);
+  });
+  return defer.promise;
+}); 
+
+module.exports = mongoose.model('Note', NoteSchema);
