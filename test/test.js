@@ -79,6 +79,9 @@ describe('#DB', function (){
 
 
 /*
+
+curl --insecure -X GET -H "Content-Type: application/json"  https://localhost:3030/notes/new
+
 test save: 
 curl --insecure -X POST -H "Content-Type: application/json" -d '{"title": "hi", "tags": ["help", "me", "save"], "body": "longbodybodfkjsdf lkjsdflkjsdf sdflkjsdf "}' https://localhost:3030/notes/
 testring destroy: 
