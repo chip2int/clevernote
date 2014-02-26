@@ -1,3 +1,6 @@
-var bookController = require('../controller/bookController.js');
+var bookController = require('../controllers/bookController.js');
 
-//TODO: what routes might we need here? 
+module.exports = function(app) {
+  
+  //TODO: what routes might we need here? 
+};

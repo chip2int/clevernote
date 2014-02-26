@@ -1,12 +1,12 @@
-var express = require('express'),
-    https   = require('https'),
-    http    = require('http'),
-    path    = require('path'),
-    app     = express(),
-    httpApp = express(),
-    db      = require('./db.js'),
-    fs      = require('fs'),
-    mongoose= require('mongoose');
+var express  = require('express'),
+    https    = require('https'),
+    http     = require('http'),
+    path     = require('path'),
+    app      = express(),
+    httpApp  = express(),
+    db       = require('./db.js'),
+    fs       = require('fs'),
+    mongoose = require('mongoose');
 
 
 /* 

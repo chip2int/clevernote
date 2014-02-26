@@ -1,26 +1,25 @@
-var User = require('../models/user.js'),
-    Note = require('../models/note.js'),
-    Tag  = require('../models/tag.js'),
-    Book  = require('../models/book.js'),
+var Tag  = require('../models/tag.js'),
+    // Note = require('../models/note.js'),
+    // Book  = require('../models/book.js'),
+    // User = require('../models/user.js'),
     Q = require('q');
 
 module.exports = {
-  listAllNotes: function(req,res){ 
-    // get titles, tags, ids of all notes
+  listUsersNotes: function(req,res){ 
+    // return titles, tags, ids of all notes
     var defer = Q.defer();
 
-    User.findUserNotebooks()
-    .then(populateNotebooksWithNotes)
-    .then(populateNotesWithTags)
+    User.findUserNotebooks({})
+    .then(Book.getTitlesOfNotes)
+    .then(Note.populateNoteWithTags)
     .then(function(data){
       defer.resolve(data);
     })
     .catch(function (error) {
       console.log("there was an error in listAllNotes: ", error);
+      defer.reject(error);
     })
     .done();
     res.send(defer.promise);
-  },
-
-
+  }
 };

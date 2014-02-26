@@ -6,9 +6,17 @@ var UserSchema = new Schema({
   name: String,
   privateKey: String,
   publicKey: String, 
-  books: [BookSchema]
+  books: [{
+    ref: mongoose.Schema.ObjectId,
+    type: 'Book'
+  }]
 });
 
 UserSchema.set('toObject', { getters: true });
 
 module.export(mongoose.model('User', UserSchema));
+
+UserSchema.methods.findUserNotebooks = function(data) {
+  // body...
+};
+

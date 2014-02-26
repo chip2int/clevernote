@@ -16,7 +16,7 @@ var TagSchema = new Schema({
 
 TagSchema.set('toObject', { getters: true });
 
-module.export(mongoose.model('Tag', TagSchema));
+module.exports = mongoose.model('Tag', TagSchema);
 
 TagSchema.methods.updateTagName = function(data) {
     // body...

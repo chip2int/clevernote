@@ -1,4 +1,7 @@
 var userController = require('../controllers/userController.js');
 
-// TODO: what routes are required for the user?
 
+module.exports = function(app) {
+  // TODO: what routes are required for the user?
+  
+};

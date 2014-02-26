@@ -2,7 +2,10 @@ var Note = require('../models/note.js');
 
 module.exports = {
   retrieveNote: function(req, res) {
-    // body...
+    // get note by Id & return note
+    Note.findById({});
+
+    res.send(defer.resolve(foundNote));
   }, 
   updateNote: function(req, res) {
     // body...

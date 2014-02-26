@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var NoteSchema = new Schema({
   title: String,
   Tags: [{
-    type: mongoose.schema.ObjectId,
+    type: mongoose.Schema.ObjectId,
     ref: 'Tag',
     unique: true,
     sparse: true
@@ -14,4 +15,8 @@ var NoteSchema = new Schema({
 });
 
 
-module.exports = monogose.model('Note', NoteSchema);
+module.exports = mongoose.model('Note', NoteSchema);
+
+NoteSchema.methods.populateNoteWithTags = function(data) {
+  // body...
+};

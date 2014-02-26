@@ -1,4 +1,4 @@
-var models = require('./schema.js');
+// var models = require('./schema.js');
 
 var exports = {
   noteList: function(req, res) {

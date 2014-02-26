@@ -1,27 +1,28 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+// var mongoose = require('mongoose');
+// var Schema = mongoose.Schema;
 
 
-models = {};
+// models = {};
 
-var NoteSchema = new Schema({
-  title: String,
-  tags: [String],
-  body: String,
-  createdOn: {type: Date, default: Date.now},
-  modifiedOn: {type: Date, default: Date.now}
-});
+// var NoteSchema = new Schema({
+//   title: String,
+//   tags: [String],
+//   body: String,
+//   createdOn: {type: Date, default: Date.now},
+//   modifiedOn: {type: Date, default: Date.now}
+// });
 
-var UserSchema = new Schema({
-  id: Number,
-  name: String,
-  privateKey: String,
-  publicKey: String
-});
-NoteSchema.set('toObject', { getters: true });
-UserSchema.set('toObject', { getters: true });
+// var UserSchema = new Schema({
+//   id: Number,
+//   name: String,
+//   privateKey: String,
+//   publicKey: String
+// });
+// NoteSchema.set('toObject', { getters: true });
+// UserSchema.set('toObject', { getters: true });
 
-models.Note = mongoose.model('Note', NoteSchema);
-models.User = mongoose.model('User', UserSchema);
+// models.Note = mongoose.model('Note', NoteSchema);
+// models.User = mongoose.model('User', UserSchema);
 
-module.exports = models;
+// module.exports = models;
+
