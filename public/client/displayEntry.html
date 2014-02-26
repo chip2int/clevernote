@@ -1,0 +1,12 @@
+<div ng-controller="displayEntryCntrl">
+
+<div>Title <input type="text" size="80" ng-model="noteTitle" name="title"></input></div>
+<div>Date  <input name="dt" ng-model="noteDate"></input></div>
+  <p class="note-area">Entry <textarea rows="10" cols="80" class="entry" ng-model="noteEntry"></textarea></p>
+  <div>
+   <span>
+    <button type="button" class="submitButton" ng-click="postEntry()">Post Entry</button>
+    <button type="button" class="clearButton"  ng-click="clearEntry()"> Clear</button>
+  </span>
+</div>
+

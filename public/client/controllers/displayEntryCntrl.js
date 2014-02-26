@@ -1,8 +1,14 @@
 angular.module('CleverNote')
-.controller('createEntryCntrl', ['$scope', '$http', function($scope, $http) {
-    $scope.noteDate = null;
-    $scope.noteTitle = "";
-    $scope.noteEntry = "";
+.controller('displayEntryCntrl', ['$scope', '$http', '$rootScope', '$state', function($scope, $http, $rootScope, $state) {
+
+    if ($rootScope.tempObj === undefined) {
+      $state.go('main');
+    }
+
+    $scope.noteDate = new Date($rootScope.tempObj["modifiedOn"]).toDateString() ;
+    $scope.noteTitle = $rootScope.tempObj["title"];
+    $scope.noteEntry = $rootScope.tempObj["body"];
+    $rootScope.tempObj == undefined;
 
   $scope.postEntry = function() {
     var noteData = {};
@@ -19,11 +25,9 @@ angular.module('CleverNote')
     });
   };
 
-  console.log($scope);
   $scope.clearEntry = function() {
     $scope.noteDate = null;
     $scope.noteTitle = "";
     $scope.noteEntry = "";
   };
-
 }]);
