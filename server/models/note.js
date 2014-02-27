@@ -37,7 +37,7 @@ NoteSchema.methods.findAndReturnNoteWithTags = function(data) {
   return defer.promise;
 };
 
-NoteSchema.methods.addAndRemoveTags = function (data) {
+NoteSchema.methods.addAndRemoveTagsFromNote = function (data) {
   var defer = Q.defer();
   var Note = mongoose.model('Note', NoteSchema),
       options = {
