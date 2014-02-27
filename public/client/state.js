@@ -10,13 +10,17 @@ angular.module('CleverNote')
 		url: '/search',
 		templateUrl: 'client/search.html'
 	})
-	.state('folders', {
-		url: '/folders',
-		templateUrl: 'client/folders.html'
+	.state('list', {
+		url: '/listEntries',
+		templateUrl: 'client/listEntries.html'
 	})
 	.state('tags', {
 		url: '/tags',
 		templateUrl: 'client/tags.html'
+	})
+	.state('displayEntry', {
+		url: '/displayEntry',
+		templateUrl: 'client/displayEntry.html'
 	})	
 
 });

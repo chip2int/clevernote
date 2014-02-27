@@ -18,7 +18,9 @@
   "dependencies": {
     "angular": "~1.2.12",
     "angular-ui-router": "~0.2.8",
-    "angular-bootstrap": "~0.10.0",
     "crypto-js": "http://crypto-js.googlecode.com/files/CryptoJS%20v3.1.2.zip"
+  },
+  "devDependencies": {
+    "angular-bootstrap": "~0.10.0"
   }
 }
