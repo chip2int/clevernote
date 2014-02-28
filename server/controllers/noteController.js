@@ -28,6 +28,14 @@ module.exports = {
     .done();
   }, 
   updateNote: function(req, res) {
+    console.log(req.body);
+    if (req.body.note_id === undefined) {
+      var note = new Note(req.body);
+      note.save();
+      console.log(note);
+      req.params.note_id = note._id;
+
+    }
     note_id = {_id: req.params.note_id};
     //TODO: this only allows us to update the Content of the note.
     // Probably should be improved to allow us to update
