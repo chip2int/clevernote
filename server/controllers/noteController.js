@@ -40,7 +40,7 @@ module.exports = {
     //TODO: this only allows us to update the Content of the note.
     // Probably should be improved to allow us to update
     // the Tags & Content @ the same time.
-    Note.update({_id: note_id}, req.body, function (error){
+    Note.update(note_id, {'body': req.body.body, 'title': req.body.title}, function (error){
       if (error) //resolve.reject();
       res.send(204);
     });
