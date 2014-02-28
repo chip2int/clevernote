@@ -3,11 +3,12 @@ angular.module('CleverNote')
     $scope.noteDate = null;
     $scope.noteTitle = "";
     $scope.noteEntry = "";
+    $scope.tagArray = [];
 
   $scope.postEntry = function() {
     var noteData = {};
     noteData["title"]= $scope.noteTitle;
-    noteData["tags"] = ["temp"];
+    noteData["tags"] = $scope.tagArray;
     noteData["body"] = $scope.noteEntry;
     $http({
       url: '/notes/',
@@ -15,7 +16,7 @@ angular.module('CleverNote')
       data: JSON.stringify(noteData)
     })
     .success(function(){
-      console.log("sucess");
+      alert('Saved the entry')
     });
   };
 
@@ -24,6 +25,12 @@ angular.module('CleverNote')
     $scope.noteDate = null;
     $scope.noteTitle = "";
     $scope.noteEntry = "";
+    $scope.tagArray.length = 0;
+  };
+
+  $scope.addTag = function() {
+    $scope.tagArray.push($scope.enteredTag);
+    $scope.enteredTag = "";
   };
 
 }]);
