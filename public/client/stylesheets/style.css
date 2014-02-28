@@ -6,12 +6,12 @@
 
 .main-menu{
   position:fixed;
-  padding-top: 20px;
   margin-top:100px;
   margin-left:20px;
   margin-right:200px;
   width: 90%;
-  background-color: white
+  height:400px;
+  background-color: #BFD0DB;
 }
 
 .title-menu {
@@ -19,6 +19,7 @@
   text-align: center;
   font-size: 50px;
   border-style:double;
+  height:20%;
 }
 
 .left-panel {
@@ -26,7 +27,7 @@
   top: 30px;
   bottom: 30px;
   width: 20%;
-  height: 100%;
+  height: 80%;
   border-color: green;
   border-style: double;
 }
@@ -35,10 +36,9 @@
   float: left;
   top: 30px;
   width: 80%;
-  height: 100%;
+  height: 80%;
   border-color:green;
   border-style: double;
-  height: 294px;
 }
 
 .div-left-panel-main {
@@ -96,6 +96,24 @@
   z-index: -1;
 }
 
+.create-title {
+  /*border-radius: 15px;*/
+  margin-bottom: 15px;
+  margin-top: 15px;
+  height: 50px;
+  width: 75%;
+  background:none;
+}
+
+.create-date {
+  margin-bottom:15px;
+  background:none;
+}
+
+.create-tag {
+  background:none;
+}
+
 .div-list-entries {
   margin-top:45px;
   position:relative;
@@ -103,6 +121,12 @@
   height:200px;
   border-style: groove;
   overflow: scroll;
+}
+
+.create-entry {
+  width:85%;
+  margin-bottom:25px;
+  background:none;
 }
 
 .span-entry-date:nth-child(even) {
@@ -145,3 +169,9 @@
   height:100%;
   /*background-color: red;*/
 }
+
+.create-tag-span {
+  background-color:cadetblue;
+  margin-right:2px;
+}
+  

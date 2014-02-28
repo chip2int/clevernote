@@ -10,7 +10,7 @@ angular.module('CleverNote')
     $scope.noteEntry = $rootScope.tempObj["body"];
     $rootScope.tempObj == undefined;
 
-  $scope.postEntry = function() {
+  $scope.updateEntry = function() {
     var noteData = {};
     noteData["title"]= $scope.noteTitle;
     noteData["tags"] = ["temp"];
