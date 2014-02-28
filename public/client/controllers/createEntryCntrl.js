@@ -7,9 +7,11 @@ angular.module('CleverNote')
 
   $scope.postEntry = function() {
     var noteData = {};
+
     noteData["title"]= $scope.noteTitle;
     noteData["tags"] = $scope.tagArray;
     noteData["body"] = $scope.noteEntry;
+
     $http({
       url: '/notes/',
       method: "POST",
@@ -20,7 +22,7 @@ angular.module('CleverNote')
     });
   };
 
-  console.log($scope);
+
   $scope.clearEntry = function() {
     $scope.noteDate = null;
     $scope.noteTitle = "";
