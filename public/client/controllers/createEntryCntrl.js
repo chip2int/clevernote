@@ -9,14 +9,14 @@ angular.module('CleverNote')
     var noteData = {};
 
     noteData["title"]= $scope.noteTitle;
-    noteData["tags"] = $scope.tagArray;
+    //noteData["Tags"] = $scope.tagArray;
     noteData["body"] = $scope.noteEntry;
 
     $http({
-      url: '/notes/new',
+      url: '/notes/',
       method: "POST",
       data: JSON.stringify(noteData)
-    })
+    })  
     .success(function(){
       alert('Saved the entry')
     });
