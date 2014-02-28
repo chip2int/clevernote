@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CleverNote</title>
+</head>
+<body ng-app="CleverNote">
+
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  git 
+  <script src="lib/angular-ui-router.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" type="text/css" href="./client/stylesheets/topcoat/css/topcoat-mobile-light.min.css"/>
+  <script src="./client/app.js"></script>
+  <script src="./client/state.js"></script>
+  <script src="./client/services/readEntryService.js"></script>
+  <script src="./client/controllers/createEntryCntrl.js"></script> 
+  <script src="./client/controllers/listEntriesCntrl.js"></script>
+  <script src="./client/controllers/displayEntryCntrl.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="./client/stylesheets/style.css">
+
+  <div class="main-menu">
+  <div class="title-menu">CleverNote</div>
+    <div class="left-panel">
+    <div class="div-left-panel-main btn">
+        <a ui-sref="main"><i class="fa fa-plus-circle fa-5x"></i></a>
+      </div>
+      <div class="div-left-panel-tags btn">
+        <a ui-sref="tags"><i class="fa fa-tags fa-5x"></i></a>
+      </div>
+      <div class="div-left-panel-list btn">
+        <a ui-sref="list"><i class="fa fa-th-list fa-5x"></i></a>
+      </div>
+      <div class="div-left-panel-srch btn">
+        <a ui-sref="search"><i class="fa fa-search fa-5x"></i></a>
+      </div>
+    </div>
+    <div class="right-panel" ui-view>
+      <ul>
+        <h1> Right Panel </h1>
+      </ul>
+    </div>  
+  </div>  
+</body>
+</html>
+
+

@@ -1,0 +1,18 @@
+<div ng-controller="createEntryCntrl">
+  <span>
+
+    <div>Title  <input type="text" class = "create-title" size="80" ng-model="noteTitle" name="title"></input></div>
+    <span>Date  <input type="date" class = "create-date" name="dt" ng-model="noteDate"></input></span>
+    <span>Tags </span>  <span ng-repeat ="tag in tagArray"> <span class="create-tag-span"> {{tag}} </span></span>
+    <input value="tag" class="create-tag" columns="5" ng-model = "enteredTag" placeHolder="Tag"></input> 
+    <button class= "submitButton" ng-click = addTag()> Submit </button>
+    <div>Entry <textarea rows="6" class="create-entry" ng-model="noteEntry"></textarea></div>
+    <span>
+
+      <button type="button" class="submitButton" ng-click="postEntry()">Post Entry</button>
+      <button type="button" class="readButton">  Read Entry</button>
+      <button type="button" class="clearButton"  ng-click="clearEntry()"> Clear</button>
+    </span>
+  </span>
+</div>
+

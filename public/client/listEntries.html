@@ -1,0 +1,14 @@
+<div ng-controller="listEntriesCntrl">
+  <div class="div-list-entries">
+    <span class="span-entry-date"><b>Date</b></span>
+    <span class="span-entry-title"><b>Title</b></span>
+    <span class="span-entry-tags"><b>Tags</b></span>
+    <div ng-repeat="entry in listEntries" >
+      <span style="height:20px;width:100%;display:inline-block" ng-click="alertEve($index)" ng-class= "{true: 'oddEntry', false: 'evenEntry'}[$index %2 !=0]">
+       <span class="span-entry-date">  {{entry.createdOn | date: 'mediumDate'}}</span>
+       <span class="span-entry-title"> {{entry.title}} </span>
+       <span class="span-entry-tags">  {{entry.tags}}  </span>
+      </span>
+    </div>
+  </div>
+</div>

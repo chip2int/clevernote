@@ -1,0 +1,177 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.main-menu{
+  position:fixed;
+  margin-top:100px;
+  margin-left:20px;
+  margin-right:200px;
+  width: 90%;
+  height:400px;
+  background-color: #BFD0DB;
+}
+
+.title-menu {
+  position:relative;
+  text-align: center;
+  font-size: 50px;
+  border-style:double;
+  height:20%;
+}
+
+.left-panel {
+  float:left;
+  top: 30px;
+  bottom: 30px;
+  width: 20%;
+  height: 80%;
+  border-color: green;
+  border-style: double;
+}
+
+.right-panel {
+  float: left;
+  top: 30px;
+  width: 80%;
+  height: 80%;
+  border-color:green;
+  border-style: double;
+}
+
+.div-left-panel-main {
+  postion:absolute;
+  width: 100%;
+  height: 25%;
+  background-color: blue;
+}
+
+
+.div-left-panel-srch {
+  width: 100%;
+  height: 25%;
+  background-color: red;
+}
+
+.div-left-panel-list {
+  width: 100%;
+  height: 25%;
+  background-color: white;
+}
+
+.div-left-panel-tags {
+  width: 100%;
+  height: 25%;
+  background-color: aquamarine;
+}
+
+.home-icon {
+  width:100%;
+  height: 100%;
+}
+
+.search-icon {
+  width:100%;
+  height:100%;
+}
+
+.folders-icon {
+  width:100%;
+  height:100%;
+}
+
+.tags-icon {
+  width:100%;
+  height:100%;
+}
+
+.btn a {
+  display: block;
+  height: 100%;
+}
+
+.note-area {
+  z-index: -1;
+}
+
+.create-title {
+  /*border-radius: 15px;*/
+  margin-bottom: 15px;
+  margin-top: 15px;
+  height: 50px;
+  width: 75%;
+  background:none;
+}
+
+.create-date {
+  margin-bottom:15px;
+  background:none;
+}
+
+.create-tag {
+  background:none;
+}
+
+.div-list-entries {
+  margin-top:45px;
+  position:relative;
+  width:750px;
+  height:200px;
+  border-style: groove;
+  overflow: scroll;
+}
+
+.create-entry {
+  width:85%;
+  margin-bottom:25px;
+  background:none;
+}
+
+.span-entry-date:nth-child(even) {
+  background-color: cyan;
+}
+
+.span-entry-date {
+  width:20%;
+  padding-right:10px;
+  float:left;
+}
+
+
+.span-entry-title {
+  width:50%;
+  padding-right:10px;
+  float:left;
+} 
+
+.span-entry-tags {
+  width:30%;
+  display:inline-block;
+  float:left;
+}
+
+/*.div-note-entry:nth-child(odd) {
+  color: blue;  
+  background:black;
+}
+*/
+
+.oddEntry{
+  width:100%;
+  height:100%;
+  background-color: cyan;
+}
+
+.evenEntry {
+  width:100%;
+  height:100%;
+  /*background-color: red;*/
+}
+
+.create-tag-span {
+  background-color:cadetblue;
+  margin-right:2px;
+}
+  
