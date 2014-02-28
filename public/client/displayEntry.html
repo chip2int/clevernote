@@ -1,7 +1,9 @@
 <div ng-controller="displayEntryCntrl">
 
 <div>Title <input type="text" class="create-title" size="80" ng-model="noteTitle" name="title"></input></div>
-<div>Date  <input name="dt" class = "create-date" ng-model="noteDate"></input></div>
+<span>Date  <input name="dt" class = "create-date" ng-model="noteDate"></input></span>
+<span>Tags </span>  <span ng-repeat ="tag in tagArray"> <span class="create-tag-span"> {{tag}} </span></span>
+    <input value="tag" class="create-tag" columns="5" ng-model = "enteredTag" placeHolder="Tag"></input> 
 <div>Entry <textarea class="create-entry" rows="6" cols="80" class="entry" ng-model="noteEntry"></textarea></div>
   <div>
    <span>

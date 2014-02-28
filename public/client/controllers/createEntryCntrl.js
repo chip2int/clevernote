@@ -11,7 +11,7 @@ angular.module('CleverNote')
     noteData["tags"] = $scope.tagArray;
     noteData["body"] = $scope.noteEntry;
     $http({
-      url: '/notes/',
+      url: '/notes/new',
       method: "POST",
       data: JSON.stringify(noteData)
     })

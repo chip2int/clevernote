@@ -33,14 +33,14 @@ module.exports = {
     // Probably should be improved to allow us to update
     // the Tags & Content @ the same time.
     Note.update({_id: note_id}, req.body, function (error){
-      if (error) resolve.reject();
+      if (error) //resolve.reject();
       res.send(204);
     });
   },
   updateTags:  function(req, res) {
     note_id = {_id: req.params.note_id};
     Note.addAndRemoveTagsFromNote({_id: note_id}, req.body, function (error){
-      if (error) resolve.reject();
+      if (error) //resolve.reject();
       res.send(204);
     });
   },
