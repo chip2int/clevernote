@@ -1,12 +1,12 @@
-var express = require('express');
-var https   = require('https');
-var http   = require('http');
-
-var path    = require('path');
-var app     = express(),
-    httpApp = express();
-var db      = require('./db.js');
-var fs      = require('fs');
+var express  = require('express'),
+    https    = require('https'),
+    http     = require('http'),
+    path     = require('path'),
+    app      = express(),
+    httpApp  = express(),
+    db       = require('./db.js'),
+    fs       = require('fs'),
+    mongoose = require('mongoose');
 
 
 /* 
@@ -42,27 +42,36 @@ app.use(express.session({
 app.use(express.static(path.join(__dirname, '..', '/public')));
 
 
-/* node endpoints */
-app.get('/notes/destroy/:noteId', db.destroy );
-app.get('/notes/list'           , db.noteList );
-app.get('/notes/:noteId'        , db.retrieve );
-app.post('/notes/'              , db.save );
-
+/* routes */
+require('./routes/userRoutes.js')(app);
+require('./routes/noteRoutes.js')(app);
+require('./routes/tagRoutes.js')(app);
+require('./routes/bookRoutes.js')(app);
 
 // app.post('/search/:tags', db.search); //TODO: allow searching on frontend
 
 
 console.log("Dir: ", __dirname);
 
-http.createServer(httpApp).listen(httpApp.get('port'), function() {
-    console.log('Express HTTP server listening on port ' + httpApp.get('port'));
-});
+/* if NOT running in test environ, run like normal */
+if (!module.parent) { 
+  /* init the db */
+  var MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost:27017/clevernote";
+      mongoose.connect(MONGODB_URL);
+  var mongo = mongoose.connection;
 
-https.createServer(sslOptions,app)
-  .listen('3030', function(){
-  console.log("Secure Express server listening on port 3030");
-});
+      mongo.on('error', console.error.bind(console, 'connection error:'));
+      mongo.once('open', function(){
+        console.log('mongo connection opened successfully');
+      });
 
-app.listen(app.get('port'));
+  http.createServer(httpApp).listen(httpApp.get('port'), function() {
+      console.log('Express HTTP server listening on port ' + httpApp.get('port'));
+  });
 
-
+  https.createServer(sslOptions,app)
+    .listen('3030', function(){
+    console.log("Secure Express server listening on port 3030");
+  });
+  // app.listen(app.get('port'));
+}
